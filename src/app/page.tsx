@@ -1,65 +1,98 @@
 import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { Badge } from "@/components/ui/Badge";
+import { Container } from "@/components/ui/Container";
+import { SectionWrapper } from "@/components/animations/SectionWrapper";
+import { TextReveal } from "@/components/animations/TextReveal";
 
+/* Design system preview page — replaced by real sections in Phase 4+ */
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <main className="min-h-screen bg-black text-white">
+
+      {/* HERO PLACEHOLDER */}
+      <section className="grain min-h-screen flex items-center relative overflow-hidden">
+        {/* Subtle blue glow behind headline */}
+        <div
+          className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
+          style={{ background: "radial-gradient(ellipse, rgba(0,82,255,0.08) 0%, transparent 70%)" }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+        <Container className="relative z-10 py-32">
+          <SectionWrapper>
+            <p className="label text-blue-electric mb-6">New Collection · 2025</p>
+            <h1 className="font-display text-white leading-none mb-6">
+              <TextReveal text="YOU IMAGINE" delay={0.1} />
+              <br />
+              <TextReveal text="WE CREATE" delay={0.3} />
+            </h1>
+            <p className="text-grey-light max-w-md mb-10 text-lg">
+              Custom hoodies and shirts, made exactly how you picture them.
+              Shipping across East Africa.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Button variant="primary" size="lg">Shop Now</Button>
+              <Button variant="ghost" size="lg">Custom Order</Button>
+            </div>
+          </SectionWrapper>
+        </Container>
+      </section>
+
+      {/* DESIGN SYSTEM PREVIEW */}
+      <section className="py-24 border-t border-grey-dark">
+        <Container>
+          <SectionWrapper>
+            <p className="label text-grey-light mb-12">Design System — Phase 2 Preview</p>
+
+            {/* Typography */}
+            <div className="mb-16 space-y-4">
+              <h2 className="font-display text-white">The Drop</h2>
+              <h3 className="font-display text-white">New Arrivals</h3>
+              <p className="font-body text-grey-light">Body text — Geist. Clean, technical, warm enough.</p>
+              <p className="label text-grey-light">Label · Barlow Condensed · Uppercase</p>
+            </div>
+
+            {/* Colors */}
+            <div className="flex flex-wrap gap-4 mb-16">
+              {[
+                { bg: "bg-blue-electric", label: "Blue Electric #0052FF" },
+                { bg: "bg-blue-deep",     label: "Blue Deep #001AFF" },
+                { bg: "bg-blue-glow",     label: "Blue Glow #4D8FFF" },
+                { bg: "bg-black-soft border border-grey-dark", label: "Black Soft #111" },
+                { bg: "bg-grey-mid",      label: "Grey Mid #333" },
+              ].map(({ bg, label }) => (
+                <div key={label} className="flex flex-col gap-2">
+                  <div className={`w-16 h-16 ${bg}`} />
+                  <span className="label text-grey-light text-[10px]">{label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Buttons */}
+            <div className="flex flex-wrap gap-4 mb-16">
+              <Button variant="primary">Primary</Button>
+              <Button variant="ghost">Ghost</Button>
+              <Button variant="text">Text Link</Button>
+              <Button variant="primary" loading>Loading</Button>
+              <Button variant="primary" disabled>Disabled</Button>
+            </div>
+
+            {/* Badges */}
+            <div className="flex flex-wrap gap-3 mb-16">
+              <Badge variant="new" />
+              <Badge variant="limited" />
+              <Badge variant="custom" />
+            </div>
+
+            {/* Logo */}
+            <div className="flex gap-8 items-center">
+              <Image src="/images/logo-dark.png" alt="The Hoodie Guy" width={120} height={120} />
+              <div className="bg-white p-4">
+                <Image src="/images/logo-light.png" alt="The Hoodie Guy" width={120} height={120} />
+              </div>
+            </div>
+          </SectionWrapper>
+        </Container>
+      </section>
+    </main>
   );
 }
