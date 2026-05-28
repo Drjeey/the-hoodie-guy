@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Geist, Barlow_Condensed } from "next/font/google";
+import { Navbar } from "@/components/layout/Navbar";
+import { CustomCursor } from "@/components/layout/CustomCursor";
+import { Providers } from "@/components/layout/Providers";
 import "./globals.css";
-
-/* next/font loads fonts at build time, self-hosts them, and injects them
-   via CSS variables. Zero FOUT, zero layout shift, zero external requests. */
 
 const bebasNeue = Bebas_Neue({
   weight: "400",
   subsets: ["latin"],
-  variable: "--font-display",   /* maps to var(--font-display) in globals.css */
-  display: "swap",              /* show fallback font immediately, swap when loaded */
+  variable: "--font-display",
+  display: "swap",
 });
 
 const geist = Geist({
@@ -41,15 +41,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
       className={`${bebasNeue.variable} ${geist.variable} ${barlowCondensed.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Providers>
+          <CustomCursor />
+          <Navbar />
+          <main>{children}</main>
+        </Providers>
+      </body>
     </html>
   );
 }

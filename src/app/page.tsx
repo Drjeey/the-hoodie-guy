@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-black text-white">
 
-      {/* HERO PLACEHOLDER */}
-      <section className="grain min-h-screen flex items-center relative overflow-hidden">
+      {/* HERO PLACEHOLDER — pt-nav offsets the fixed navbar height */}
+      <section className="grain min-h-screen flex items-center relative overflow-hidden pt-nav">
         {/* Subtle blue glow behind headline */}
         <div
           className="absolute top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full pointer-events-none"
