@@ -1,0 +1,26 @@
+﻿# netlify.toml — Tells Netlify how to build and deploy this Next.js site
+
+[build]
+  # The command Netlify runs to build your site
+  command = "npm run build"
+  # The folder Netlify reads after the build to deploy
+  publish = ".next"
+
+[build.environment]
+  # Use Node.js 20 (current LTS — Long Term Support version)
+  NODE_VERSION = "20"
+  # Disable Next.js from sending anonymous usage stats to Vercel during build
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# This plugin makes Next.js work properly on Netlify
+# Without it, Server Components and API routes would not function
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+# Settings for deploy previews (created for every pull request)
+[context.deploy-preview]
+  command = "npm run build"
+
+# Settings for branch deploys (created for every non-main branch)
+[context.branch-deploy]
+  command = "npm run build"
