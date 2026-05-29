@@ -101,6 +101,10 @@
   --font-display: var(--font-display);
   --font-body:    var(--font-body);
   --font-accent:  var(--font-accent);
+
+  /* Spacing/sizing tokens — generates pt-nav, h-nav, max-w-container etc. */
+  --spacing-nav:        72px;
+  --max-width-container: 1440px;
 }
 
 /* ─────────────────────────────────────────

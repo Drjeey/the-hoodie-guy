@@ -1,22 +1,19 @@
 import { cn } from "@/lib/utils";
 
 interface ContainerProps {
-  as?: React.ElementType;  /* semantic HTML: div, section, main, article */
+  as?: React.ElementType;
   className?: string;
   children: React.ReactNode;
 }
 
-/* Constrains content to max-width and adds consistent horizontal padding.
-   Use `as` to keep semantics correct — a hero section should be <section>,
-   not a <div>. Matters for accessibility and SEO. */
+/* Max-width wrapper with fluid horizontal padding.
+   Uses inline style for padding so it works regardless of Tailwind version.
+   clamp(1.5rem, 5vw, 5rem) = 24px min, scales with viewport, 80px max. */
 export function Container({ as: Tag = "div", className, children }: ContainerProps) {
   return (
     <Tag
-      className={cn(
-        "w-full max-w-container mx-auto",
-        "px-4 sm:px-8 lg:px-16 xl:px-20",
-        className,
-      )}
+      className={cn("w-full mx-auto", className)}
+      style={{ maxWidth: "1440px", paddingLeft: "clamp(1.5rem, 5vw, 5rem)", paddingRight: "clamp(1.5rem, 5vw, 5rem)" }}
     >
       {children}
     </Tag>
