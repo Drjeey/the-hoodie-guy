@@ -1,11 +1,17 @@
 "use client";
 
+import { MotionConfig } from "framer-motion";
 import { useLenis } from "@/hooks/useLenis";
 
 /* Client-only wrapper inside the server-rendered root layout.
-   Hooks (useLenis) need a browser environment — isolating them here
-   keeps layout.tsx as a pure Server Component for better SEO and performance. */
+   MotionConfig reducedMotion="user" makes Framer Motion respect the OS
+   "prefers-reduced-motion" setting — all FM animations are disabled automatically.
+   CSS handles the same via @media (prefers-reduced-motion) in globals.css. */
 export function Providers({ children }: { children: React.ReactNode }) {
   useLenis();
-  return <>{children}</>;
+  return (
+    <MotionConfig reducedMotion="user">
+      {children}
+    </MotionConfig>
+  );
 }

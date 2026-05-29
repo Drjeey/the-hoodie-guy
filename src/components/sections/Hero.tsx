@@ -81,8 +81,8 @@ export function Hero() {
       ref={sectionRef}
       className="relative min-h-screen flex items-center overflow-hidden bg-black grain"
     >
-      {/* Blue radial glow — behind the headline */}
-      <div
+      {/* Blue radial glow — pulses subtly to add life without distraction */}
+      <motion.div
         className="absolute pointer-events-none"
         style={{
           top: "40%",
@@ -92,6 +92,8 @@ export function Hero() {
           height: 700,
           background: "radial-gradient(ellipse, rgba(0,82,255,0.09) 0%, transparent 65%)",
         }}
+        animate={{ opacity: [0.6, 1, 0.6] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Scroll-fade overlay — darkens the hero as user scrolls */}

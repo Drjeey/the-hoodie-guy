@@ -4,6 +4,7 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { CustomCursor } from "@/components/layout/CustomCursor";
 import { Providers } from "@/components/layout/Providers";
+import { ScrollProgressBar } from "@/components/ui/ScrollProgressBar";
 import "./globals.css";
 
 const bebasNeue = Bebas_Neue({
@@ -50,6 +51,7 @@ export default function RootLayout({
     >
       <body>
         <Providers>
+          <ScrollProgressBar />
           <CustomCursor />
           <Navbar />
           <main>{children}</main>

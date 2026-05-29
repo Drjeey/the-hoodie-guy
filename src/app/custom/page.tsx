@@ -1,10 +1,12 @@
 import { Container } from "@/components/ui/Container";
+import { PageWrapper } from "@/components/layout/PageWrapper";
 import { CustomOrderWizard } from "@/components/sections/CustomOrderWizard";
 
 export const metadata = { title: "Custom Order" };
 
 export default function CustomPage() {
   return (
+    <PageWrapper>
     <Container as="main" className="pt-nav min-h-screen">
       <div className="py-20 md:py-28">
         <p className="label text-blue-electric mb-4">You Imagine, We Create</p>
@@ -20,5 +22,6 @@ export default function CustomPage() {
         <CustomOrderWizard />
       </div>
     </Container>
+    </PageWrapper>
   );
 }
