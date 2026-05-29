@@ -1,10 +1,11 @@
 import { Hero } from "@/components/sections/Hero";
+import { ProductShowcase } from "@/components/sections/ProductShowcase";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      {/* Phase 5: ProductShowcase goes here */}
+      <ProductShowcase />
       {/* Phase 6: VideoLookbook goes here  */}
       {/* Phase 8: SocialProof goes here    */}
     </>
