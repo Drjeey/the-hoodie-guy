@@ -2,7 +2,12 @@ import { Container } from "@/components/ui/Container";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { CustomOrderWizard } from "@/components/sections/CustomOrderWizard";
 
-export const metadata = { title: "Custom Order" };
+export const metadata = {
+  title: "Custom Order",
+  description:
+    "Design your own hoodie or t-shirt. 1 piece minimum. 7-day turnaround. Your colorway, your graphic, your fit.",
+  alternates: { canonical: "https://thehoodieguy.co.ke/custom" },
+};
 
 export default function CustomPage() {
   return (

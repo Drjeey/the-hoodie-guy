@@ -1,7 +1,12 @@
 import { Container } from "@/components/ui/Container";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 
-export const metadata = { title: "Shop" };
+export const metadata = {
+  title: "Shop",
+  description:
+    "Browse The Hoodie Guy collection — heavyweight hoodies, tees, and custom pieces. Shipping across East Africa.",
+  alternates: { canonical: "https://thehoodieguy.co.ke/shop" },
+};
 
 export default function ShopPage() {
   return (
