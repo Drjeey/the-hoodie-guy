@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function CustomCursor() {
@@ -60,7 +60,7 @@ export function CustomCursor() {
         animate={{
           width:  hovering ? 40 : 20,
           height: hovering ? 40 : 20,
-          backgroundColor: hovering ? "#0052FF" : "transparent",
+          backgroundColor: hovering ? "#0052FF" : "rgba(0,0,0,0)",
           borderColor: hovering ? "#0052FF" : "#FAFAFA",
           opacity: 0.85,
         }}
