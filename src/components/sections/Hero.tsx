@@ -131,6 +131,7 @@ export function Hero() {
               width={320}
               height={320}
               className="opacity-10 object-contain"
+              style={{ mixBlendMode: "screen" }}
               priority
             />
           </div>
