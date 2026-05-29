@@ -14,6 +14,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const [hovered, setHovered] = useState(false);
+  const [imgState, setImgState] = useState<"loading" | "loaded" | "error">("loading");
 
   const href = product.badge === "custom" ? "/custom" : `/shop/${product.slug}`;
 
@@ -27,25 +28,35 @@ export function ProductCard({ product }: ProductCardProps) {
     >
       {/* Image */}
       <div className="relative aspect-[3/4] overflow-hidden bg-grey-dark">
+        {/* Shimmer skeleton — visible while loading */}
+        {imgState === "loading" && (
+          <div className="absolute inset-0 bg-grey-dark animate-pulse" />
+        )}
+
+        {/* Branded fallback — shown when image fails to load */}
+        {imgState === "error" && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center gap-3"
+            style={{ background: "linear-gradient(135deg, #111111 0%, #1A1A1A 100%)" }}>
+            <span className="font-display text-grey-mid tracking-widest uppercase"
+              style={{ fontSize: "clamp(1.5rem, 1rem + 2vw, 2.5rem)" }}>
+              THG
+            </span>
+            <span className="label text-grey-mid" style={{ fontSize: "0.6rem" }}>
+              {product.category}
+            </span>
+          </div>
+        )}
+
         <Image
           src={product.image}
           alt={product.name}
           fill
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-          onError={(e) => {
-            // Fallback placeholder when image doesn't exist yet
-            const target = e.currentTarget as HTMLImageElement;
-            target.style.display = "none";
-          }}
+          style={{ opacity: imgState === "loaded" ? 1 : 0, transition: "opacity 0.4s ease" }}
+          onLoad={() => setImgState("loaded")}
+          onError={() => setImgState("error")}
         />
-
-        {/* Placeholder shown when no real image */}
-        <div className="absolute inset-0 flex items-center justify-center bg-grey-dark">
-          <span className="font-display text-grey-mid text-2xl tracking-widest uppercase">
-            {product.category}
-          </span>
-        </div>
 
         {/* Badge */}
         {product.badge && (

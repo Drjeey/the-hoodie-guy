@@ -38,7 +38,7 @@ export const slideInRight = {
   visible: { opacity: 1, x: 0, transition: { duration: 0.9, ease: EASE_OUT_EXPO } },
 };
 
-export const WHATSAPP_NUMBER = "+254700000000";
+export const WHATSAPP_NUMBER = "+254707582239";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}`;
 export const INSTAGRAM_HANDLE = "@_the_hoodie_guy_1";
 export const INSTAGRAM_URL = "https://instagram.com/_the_hoodie_guy_1";

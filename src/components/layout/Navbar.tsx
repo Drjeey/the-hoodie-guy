@@ -13,8 +13,7 @@ const navLinks = [
   { href: "/custom", label: "Custom" },
 ];
 
-const WHATSAPP_NUMBER = "+254700000000";
-const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}`;
+import { WHATSAPP_URL } from "@/lib/constants";
 
 export function Navbar() {
   const [scrolled, setScrolled]   = useState(false);
